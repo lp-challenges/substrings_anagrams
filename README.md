@@ -1,5 +1,6 @@
 
 #### Since swift 4 Strings are Collections. It is possible to use subscripts, iterate over the characters, filter, etc.
+#### Need to use String.Index and not an Int
 
 ## start index & end index
 `startIndex` is the index of the first character <br>
@@ -50,3 +51,38 @@ if let index = str.index(str.startIndex, offsetBy: 7, limitedBy: str.endIndex) {
     str[index]  // p
 }
 ```
+# Substrings
+## Prefix
+```
+let index = str.index(str.startIndex, offsetBy: 5)
+let mySubstring = str[..<index] // Hello
+```
+or prefix
+```
+let index = str.index(str.startIndex, offsetBy: 5)
+let mySubstring = str.prefix(upTo: index) // Hello
+```
+or even easier:
+```
+let mySubstring = str.prefix(5) // Hello
+```
+
+## Suffix
+```
+let index = str.index(str.endIndex, offsetBy: -10)
+let mySubstring = str[index...] // playground
+```
+or suffix:
+```
+let index = str.index(str.endIndex, offsetBy: -10)
+let mySubstring = str.suffix(from: index) // playground
+```
+or even easier:
+```
+let mySubstring = str.suffix(10) // playground
+```
+`Dont need to count back with suffix`
+
+## Converting Substring to String
+Don't forget, when you are ready to save your substring, you should convert it to a String!
+`let myString = String(mySubstring)`
