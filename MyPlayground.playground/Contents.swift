@@ -1,22 +1,26 @@
 import UIKit
 
-func countAnagrams(for string: String) -> Int {
-  var substrings = [[Character]]()
-  var retval = 0
-  for sIdx in 0..<string.count {
-    let startIdx = string.index(string.startIndex, offsetBy: sIdx)
-    for eIdx in sIdx + 1...string.count {
-        let endIdx = string.index(string.startIndex, offsetBy: eIdx)
-        let range = startIdx..<endIdx
-        let substring = string[range].sorted()
-        for substring1 in substrings {
-          if substring1 == substring {
-              retval += 1
-          }
-        }
-        substrings.append(substring)
-      }
-  }
+let str = "Hello, playground"
 
-  return retval
+func countAnagrams(for string: String) -> Int {
+  var substringsArray = [[Character]]()
+  var counter = 0
+  for index in 0..<string.count {
+    let startIndex = string.index(string.startIndex, offsetBy: index)
+    for j_index in index + 1...string.count {
+      let endIndex = string.index(string.startIndex, offsetBy: j_index)
+      let range = startIndex..<endIndex
+      let substring = string[range].sorted()
+      for element in substringsArray {
+        if element == substring {
+          counter += 1
+        }
+      }
+      substringsArray.append(substring)
+    }
+  }
+  return counter
 }
+
+let result = countAnagrams(for: "cdcd") //expect 5
+print(result)
