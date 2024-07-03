@@ -86,3 +86,13 @@ let mySubstring = str.suffix(10) // playground
 ## Converting Substring to String
 Don't forget, when you are ready to save your substring, you should convert it to a String!
 `let myString = String(mySubstring)`
+
+## Find the index of a Char and slice the string
+```
+let string = "dvdf"
+let valueIndex = string.firstIndex(of: Character("d"))
+let indexToSlice = string.index(after: valueIndex!)
+let substring = string.suffix(from: indexToSlice)
+let result = String(substring)
+print(result)
+```
